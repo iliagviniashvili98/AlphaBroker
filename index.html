@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AlphaBroker — საბროკერო სერვისები</title>
 
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
@@ -212,6 +213,10 @@
       margin: 0;
     }
 
+    #openAccountForm .terms label {
+      margin: 0;
+    }
+
     #openAccountForm button[type="submit"] {
       grid-column: 1 / -1;
       justify-self: center;
@@ -267,29 +272,13 @@
       font-size: 14px;
     }
 
-    /* ✅ RESPONSIVE FIX */
+    /* RESPONSIVE */
     @media (max-width: 900px) {
-      header {
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 12px;
+      .hero {
+        grid-template-columns: 1fr;
       }
       nav {
         display: none;
-      }
-      .cta {
-        display: inline-block;
-        margin: 0 auto;
-        text-align: center;
-      }
-      .hero {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-      .hero-actions {
-        flex-direction: column;
-        align-items: center;
       }
       .contacts {
         grid-template-columns: 1fr;
@@ -307,7 +296,6 @@
     }
   </style>
 </head>
-
 <body>
   <div class="container">
     <!-- Header -->
@@ -436,6 +424,7 @@
   </div>
 
   <script>
+    // Live ticker
     function startMockTicker() {
       const tickerEl = document.getElementById("marketTicker");
       const timeEl = document.getElementById("tickerTime");
@@ -459,33 +448,42 @@
     }
     startMockTicker();
 
+    // Scroll to contact
     function scrollToContact() {
       document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
     }
 
+    // Live chat demo
     function openLiveChat() {
       alert("Live Chat დემო რეჟიმშია");
     }
 
+    // Footer year
     document.getElementById("copyYear").textContent = new Date().getFullYear();
 
+    // Form handler
     document.addEventListener("DOMContentLoaded", () => {
       const form = document.getElementById("openAccountForm");
       if (!form) return;
+
       form.addEventListener("submit", (e) => {
         e.preventDefault();
+
         const data = new FormData(form);
         const email = data.get("email");
         const phone = data.get("phone");
         const accepted = document.getElementById("terms").checked;
+
         if (!email || !phone) {
           alert("გთხოვთ მიუთითოთ ელფოსტა და ტელეფონი");
           return;
         }
+
         if (!accepted) {
           alert("გთხოვთ დაეთანხმოთ წესებს და პირობებს");
           return;
         }
+
         alert("✅ მადლობა! თქვენი განაცხადი მიღებულია. ჩვენი გუნდი დაგიკავშირდებათ მას შემდეგ, რაც KYC გაივლით.");
         form.reset();
       });
