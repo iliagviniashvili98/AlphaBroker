@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AlphaBroker — საბროკერო სერვისები</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
+
+    :root {
+      --brand-500: #0b3d91;
+      --brand-700: #072a63;
+      --accent: #00838f;
+      --muted: #6b7280;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background: linear-gradient(180deg, #fbfdff 0%, #f6f9fc 100%);
+      margin: 0;
+      color: #0f1724;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    /* HEADER */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .mark {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--brand-500), var(--accent));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .brand {
+      font-weight: 700;
+      color: var(--brand-700);
+    }
+
+    .tagline {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    nav {
+      display: flex;
+      gap: 18px;
+    }
+
+    nav a {
+      color: var(--brand-700);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .cta {
+      background: var(--brand-500);
+      color: #fff;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .cta:hover {
+      background: var(--brand-700);
+    }
+
+    .btn-ghost {
+      border: 1px solid #dbe3f5;
+      background: #fff;
+      color: var(--brand-700);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: 30px;
+      color: var(--brand-700);
+    }
+
+    .hero p {
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .pillbar {
+      display: flex;
+      gap: 10px;
+      margin-top: 14px;
+      align-items: center;
+    }
+
+    .pill {
+      background: #eaf1ff;
+      padding: 6px 10px;
+      border-radius: 999px;
+      color: var(--brand-700);
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .hero-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: 0 10px 25px rgba(14, 30, 60, 0.08);
+    }
+
+    .ticker .row {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .ticker-note {
+      margin-top: 8px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* SERVICES */
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 18px;
+      margin: 30px 0;
+    }
+
+    /* CARD */
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: 0 6px 20px rgba(14, 30, 60, 0.05);
+    }
+
+    /* FORM */
+    #openAccountForm {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    #openAccountForm input[type="text"],
+    #openAccountForm input[type="email"],
+    #openAccountForm input[name="firstName"],
+    #openAccountForm input[name="lastName"],
+    #openAccountForm input[name="phone"] {
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #eef4ff;
+      font-family: inherit;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    #openAccountForm .terms {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    #openAccountForm .terms input[type="checkbox"] {
+      width: auto;
+      margin: 0;
+    }
+
+    #openAccountForm button[type="submit"] {
+      grid-column: 1 / -1;
+      justify-self: center;
+      margin-top: 12px;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .contacts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .badges {
+      display: flex;
+      gap: 10px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      background: #eaf1ff;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 13px;
+      color: var(--brand-700);
+    }
+
+    section {
+      margin-top: 50px;
+    }
+
+    h2 {
+      color: var(--brand-700);
+      font-size: 26px;
+    }
+
+    h3 {
+      color: var(--brand-700);
+    }
+
+    /* FOOTER */
+    footer {
+      margin-top: 40px;
+      border-top: 1px solid #eaeef9;
+      padding-top: 20px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 14px;
+    }
+
+    /* ✅ RESPONSIVE FIX */
+    @media (max-width: 900px) {
+      header {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+      }
+      nav {
+        display: none;
+      }
+      .cta {
+        display: inline-block;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero-actions {
+        flex-direction: column;
+        align-items: center;
+      }
+      .contacts {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      #openAccountForm {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header aria-label="მთავარი ნავიგაცია">
+      <div class="logo">
+        <div class="mark">AB</div>
+        <div>
+          <div class="brand">AlphaBroker</div>
+          <div class="tagline">საბროკერო სერვისები</div>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#services">სერვისები</a>
+        <a href="#insights">ანალიტიკა</a>
+        <a href="#about">ჩვენ შესახებ</a>
+        <a href="#contact">კონტაქტი</a>
+      </nav>
+
+      <a class="cta" href="#open-account">ანგარიშის გახსნა</a>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-left">
+        <h1>ინვესტირება და სავაჭრო გადაწყვეტილებები — უსაფრთხოდ და კომფორტულად</h1>
+        <p>AlphaBroker გთავაზობთ პროფესიონალურ პლატფორმას, კვლევას და აგრეგირებულ ბაზრის ანალიტიკას ინვესტორებისთვის და ინსტიტუციონალებისთვის.</p>
+
+        <div class="hero-actions">
+          <a class="cta" href="#open-account">ანგარიშის გახსნა</a>
+          <button class="btn-ghost" onclick="scrollToContact()">დეტალურად / კონტაქტი</button>
+        </div>
+
+        <div class="pillbar">
+          <div class="pill">სანდო — ლიცენზირებული</div>
+          <span class="muted">თვეში 10,000+ ტრანზაქცია</span>
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <strong>Live ბაზარი</strong>
+          <small id="tickerTime">--:--</small>
+        </div>
+        <div class="ticker" id="marketTicker">
+          <div class="row"><div>GEORGX</div><div class="muted">1.234</div></div>
+          <div class="row"><div>GEL/USD</div><div class="muted">0.318</div></div>
+          <div class="row"><div>Gold</div><div class="muted">1,954.20</div></div>
+          <div class="ticker-note">განახლება ყოველ 30 წამში</div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Services -->
+    <section id="services">
+      <h2>ჩვენი სერვისები</h2>
+      <div class="services">
+        <div class="card">
+          <h3>სავაჭრო პლატფორმა</h3>
+          <p>მოძრავი, უსაფრთხო და სწრაფი პლატფორმა — ხელმისაწვდომი ვებით და მობილურით.</p>
+        </div>
+        <div class="card">
+          <h3>პორტფელის მართვა</h3>
+          <p>პროფესიონალური მენეჯმენტი ინდივიდუალური მიზნების მიხედვით, რეგულარულ ანგარიშგებებით.</p>
+        </div>
+        <div class="card">
+          <h3>ანალიტიკა და კვლევა</h3>
+          <p>ყოველკვირეული ბაზრის მიმოხილვები და ვებინარები განათლებისთვის.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <h2>ჩვენ შესახებ</h2>
+      <div class="card">
+        <p>AlphaBroker — ლიცენზირებული საბროკერო კომპანია, რომელიც გამჭვირვალობასა და კლიენტის ინტერესს აყენებს პირველ ადგილზე.</p>
+        <div class="badges">
+          <div class="badge">ლიცენზია: ეროვნული ბანკი</div>
+          <div class="badge">საზოგადოებრივი ფონდების უზრუნველყოფა</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Open Account -->
+    <section id="open-account">
+      <div class="card">
+        <h3>ანგარიშის გახსნა</h3>
+        <p class="muted">საჭიროა KYC — პირადობის დოკუმენტი და მისამართის დამადასტურებელი საბუთი.</p>
+        <form id="openAccountForm">
+          <input name="firstName" placeholder="სახელი" required />
+          <input name="lastName" placeholder="გვარი" required />
+          <input name="email" type="email" placeholder="E-mail" required />
+          <input name="phone" placeholder="ტელეფონი" required />
+          <div class="terms">
+            <input id="terms" type="checkbox" required />
+            <label for="terms">ვეთანხმები წესებს და პირობებს</label>
+          </div>
+          <button type="submit" class="cta">გაგზავნა</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2>კონტაქტი</h2>
+      <div class="contacts">
+        <div class="card">
+          <strong>ოფისი</strong>
+          <p class="muted">თბილისი, მერაბ კოსტავას ქ. 12</p>
+          <p class="muted">ტელ: +995 32 2XX XXXX</p>
+          <p class="muted">Email: support@alphabroker.ge</p>
+        </div>
+        <div class="card">
+          <strong>სამსახური</strong>
+          <p class="muted">ორშ–პარ: 10:00 – 18:00 (GMT+4)</p>
+          <button class="btn-ghost" onclick="openLiveChat()">Live Chat</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>© <span id="copyYear"></span> AlphaBroker. ყველა უფლება დაცულია.</p>
+    </footer>
+  </div>
+
+  <script>
+    function startMockTicker() {
+      const tickerEl = document.getElementById("marketTicker");
+      const timeEl = document.getElementById("tickerTime");
+      if (!tickerEl || !timeEl) return;
+
+      function update() {
+        const now = new Date();
+        timeEl.textContent = now.toLocaleTimeString("en-GB");
+        tickerEl.querySelectorAll(".row").forEach((row, i) => {
+          const valEl = row.children[1];
+          const base =
+            parseFloat(valEl.textContent.replace(/,/g, "")) ||
+            (i === 0 ? 1.234 : i === 1 ? 0.318 : 1954.2);
+          const delta = (Math.random() - 0.5) * (i === 2 ? 1 : 0.01);
+          valEl.textContent = (base + delta).toFixed(3);
+        });
+      }
+
+      update();
+      setInterval(update, 30000);
+    }
+    startMockTicker();
+
+    function scrollToContact() {
+      document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+    }
+
+    function openLiveChat() {
+      alert("Live Chat დემო რეჟიმშია");
+    }
+
+    document.getElementById("copyYear").textContent = new Date().getFullYear();
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("openAccountForm");
+      if (!form) return;
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const data = new FormData(form);
+        const email = data.get("email");
+        const phone = data.get("phone");
+        const accepted = document.getElementById("terms").checked;
+        if (!email || !phone) {
+          alert("გთხოვთ მიუთითოთ ელფოსტა და ტელეფონი");
+          return;
+        }
+        if (!accepted) {
+          alert("გთხოვთ დაეთანხმოთ წესებს და პირობებს");
+          return;
+        }
+        alert("✅ მადლობა! თქვენი განაცხადი მიღებულია. ჩვენი გუნდი დაგიკავშირდებათ მას შემდეგ, რაც KYC გაივლით.");
+        form.reset();
+      });
+    });
+  </script>
+</body>
+</html>
