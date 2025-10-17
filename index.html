@@ -297,10 +297,25 @@
       .hero h1 {
         font-size: 24px;
       }
+    }
 
+    @media (max-width: 400px) {
+      header {
+        flex-wrap: nowrap;
+      }
+      
+      .logo .tagline {
+        display: none;
+      }
+      
+      .logo .brand {
+        font-size: 14px;
+      }
+      
       .cta {
         padding: 10px 12px;
-        font-size: 14px;
+        font-size: 13px;
+        flex-shrink: 0;
       }
     }
   </style>
