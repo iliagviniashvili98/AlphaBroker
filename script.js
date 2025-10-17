@@ -1,4 +1,4 @@
-// live ticker simulation
+// Live ticker
 function startMockTicker() {
   const tickerEl = document.getElementById("marketTicker");
   const timeEl = document.getElementById("tickerTime");
@@ -22,20 +22,20 @@ function startMockTicker() {
 }
 startMockTicker();
 
-// smooth scroll to contact
+// Scroll to contact
 function scrollToContact() {
   document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
 }
 
-// live chat mock
+// Live chat demo
 function openLiveChat() {
   alert("Live Chat დემო რეჟიმშია");
 }
 
-// dynamic year
+// Footer year
 document.getElementById("copyYear").textContent = new Date().getFullYear();
 
-// working form handler
+// Account form handler
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("openAccountForm");
   if (!form) return;
@@ -58,9 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    alert(
-      "✅ მადლობა! თქვენი განაცხადი მიღებულია. ჩვენი გუნდი დაგიკავშირდებათ მას შემდეგ, რაც KYC გაივლით."
-    );
+    alert("✅ მადლობა! თქვენი განაცხადი მიღებულია. ჩვენი გუნდი დაგიკავშირდებათ მას შემდეგ, რაც KYC გაივლით.");
     form.reset();
   });
 });
